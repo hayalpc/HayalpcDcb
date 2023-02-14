@@ -1,0 +1,29 @@
+{
+  "Routes": [
+    {
+      //internal config
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 60601
+        }
+      ],
+      "DownstreamHeaderTransform": {
+        "Server": "Server"
+      },
+      //external config
+      "UpstreamPathTemplate": "/v1/{everything}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "UpstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    }
+  ]
+}
